@@ -10,5 +10,11 @@ then
     ln -s "${DATA_MNT}" "${HOME}/project/data" 
 fi
 
+# tru create log folder
+if [ ! -d "${CRON_DB_PATH}/logs" ] 
+then
+    mkdir -p "${CRON_DB_PATH}/logs"
+fi
+
 # start 
 crontab-ui --autosave
