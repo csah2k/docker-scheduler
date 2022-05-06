@@ -89,7 +89,8 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     npm install -g npm && \
     npm install -g crontab-ui && \
-    chown -R ${NB_UID}:${NB_GID} "${HOME}/.npm"
+    chown -R ${NB_UID}:${NB_GID} "${HOME}/.npm" && \
+    service cron start
     
 USER ${NB_UID}
 ARG PYTHON_VERSION=default
@@ -168,7 +169,6 @@ EXPOSE ${PORT}
 HEALTHCHECK  --interval=30s --timeout=5s --start-period=30s --retries=3 \
     CMD healthcheck.sh
 
-# Switch back to csah2k to avoid accidental container runs as root
-USER ${NB_UID}
+USER root
 WORKDIR "${HOME}/project"    
 VOLUME [ "${CRON_DB_PATH}" ]
