@@ -11,9 +11,11 @@ then
     ln -s "${DATA_MNT}" "${HOME}/project/data" 
 fi
 
-# tru create log folder
-if [ ! -d "${CRON_DB_PATH}/logs" ] 
+# try to clean or create log folder
+if [ -d "${CRON_DB_PATH}/logs" ] 
 then
+    rm -rf "${CRON_DB_PATH}/logs/*"
+else
     mkdir -p "${CRON_DB_PATH}/logs"
 fi
 
