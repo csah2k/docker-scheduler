@@ -149,6 +149,7 @@ RUN mamba install --quiet --yes \
     rm -rf "${HOME}/.cache/yarn" && \
     mkdir -p "${HOME}/.certs" && \
     mkdir -p "${CRON_DB_PATH}" && \
+    mkdir -p "${CRON_DB_PATH}/logs" && \
     mkdir -p "${HOME}/project" && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
