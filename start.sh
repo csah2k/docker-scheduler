@@ -1,12 +1,8 @@
 #!/bin/bash
 
 # clone target project
-if [ -d "${HOME}/project" ] 
-then
-    rm -rf "${HOME}/project/*"
-fi
 cd "${HOME}/project"
-git clone --quiet ${GIT_REPO} .
+git clone --quiet ${GIT_REPO} . || git pull
 
 # try create links data
 if [ -d "${DATA_MNT}" ] 
